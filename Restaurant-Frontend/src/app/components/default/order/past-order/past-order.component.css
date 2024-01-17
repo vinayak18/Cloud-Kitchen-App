@@ -1,0 +1,30 @@
+/* * {
+  height: 70vh;
+} */
+@media (max-width: 992px) {
+    img {
+      width: 35%;
+    }
+  }
+  @media (max-width: 575px) {
+    .col-sm-8 {
+      width: 60%;
+    }
+    .col-sm-4 {
+      width: 40%;
+    }
+  }
+  .border-warning {
+    border: 1px solid #ffb633 !important;
+    border-radius: 5px;
+  }
+  .card {
+    border: 1px solid gray !important;
+  }
+  
+  #page2 ::ng-deep .ngx-pagination .current,
+  #page1 ::ng-deep .ngx-pagination .current {
+    background: #ffb633 !important;
+    color: black !important;
+  }
+  

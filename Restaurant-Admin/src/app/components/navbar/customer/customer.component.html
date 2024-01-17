@@ -1,0 +1,63 @@
+<app-screen-loader *ngIf="isLoaded"></app-screen-loader>
+<div class="container-fluid mt-3 content-inner">
+  <div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between">
+            <div class="header-title pt-2">
+              <h4 class="card-title font-weight-bold">Customers List</h4>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr class="trow">
+                    <th scope="col">Profile</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">User Id</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let customer of customers">
+                    <td class="px-3">
+                      <img
+                        class="profile-img"
+                        [src]="customer.img_url"
+                        height="40px"
+                        width="40px"
+                        alt="profile"
+                      />
+                    </td>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.phoneNo }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.userId }}</td>
+                    <td>
+                      <span class="badge bg-success text-light">Active</span>
+                    </td>
+                    <td>CUSTOMER</td>
+                    <td class="pl-1">
+                      <a class="btn btn-sm btn-icon btn-warning"
+                        ><i class="fa fa-eye"></i
+                      ></a>
+                      <a class="ml-2 btn btn-sm btn-icon btn-danger"
+                        ><i class="far fa-trash-alt text-light"></i
+                      ></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

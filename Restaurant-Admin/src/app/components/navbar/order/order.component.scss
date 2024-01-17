@@ -1,0 +1,16 @@
+.card-title {
+  font-family: "Lucida Handwriting", "Gill Sans", "Gill Sans MT", "Calibri",
+    "Trebuchet MS", sans-serif;
+  color: #ffb633;
+}
+.disabled {
+  pointer-events: none;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.card-style {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid rgb(215, 215, 215);
+}

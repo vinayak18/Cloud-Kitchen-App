@@ -1,0 +1,127 @@
+.form-margin-left{
+  margin-left: 10%;
+  width: 400px;
+}
+
+.bg-circle-login {
+  position: absolute;
+  overflow: hidden;
+}
+.bg-circle-login::before {
+  content: "";
+  position: absolute;
+  height: 512px;
+  width: 512px;
+  background: #ffdc9b;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  -webkit-transform: translate(-33%, -33%) scale(3.6);
+  -ms-transform: translate(-33%, -33%) scale(3.6);
+  transform: translate(-33%, -33%) scale(3.6);
+}
+
+@media (min-width: 1400px) {
+  .sign-in-img {
+    position: relative;
+    width: 53%;
+    bottom: -23%;
+    left: 23%;
+  }
+  .bg-circle-login {
+    position: absolute;
+    overflow: hidden;
+  }
+  .bg-circle-login::before {
+    content: "";
+    position: absolute;
+    -webkit-transform: translate(9%, -58%) scale(3);
+    -ms-transform: translate(9%, -58%) scale(3);
+    transform: translate(9%, -58%) scale(3);
+  }
+}
+
+@media (max-width: 1399.98px) {
+  .sign-in-img {
+    position: relative;
+    width: 67%;
+    bottom: -23%;
+    left: 19%;
+  }
+  .bg-circle-login {
+    position: absolute;
+    overflow: hidden;
+  }
+  .bg-circle-login::before {
+    content: "";
+    position: absolute;
+    -webkit-transform: translate(15%, -73%) scale(3.6);
+    -ms-transform: translate(15%, -73%) scale(3.6);
+    transform: translate(15%, -73%) scale(3.6);
+  }
+}
+
+@media (min-width: 1200px) {
+  .bg-circle::before {
+    -webkit-transform: translate(-14%, -67%) scale(2.9);
+    -ms-transform: translate(-14%, -67%) scale(2.9);
+    transform: translate(-14%, -67%) scale(2.9);
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .bg-circle-login {
+    position: absolute;
+    overflow: hidden;
+  }
+  .bg-circle-login::before {
+    content: "";
+    position: absolute;
+    -webkit-transform: translate(62%, -100%) scale(3.5);
+    -ms-transform: translate(62%, -100%) scale(3.5);
+    transform: translate(62%, -100%) scale(3.5);
+  }
+  .sign-in-img {
+    position: relative;
+    width: 83%;
+    bottom: -24%;
+    left: -2%;
+  }
+  .bg-circle::before {
+    -webkit-transform: translate(9%, -52%) scale(2.5);
+    -ms-transform: translate(9%, -52%) scale(2.5);
+    transform: translate(9%, -52%) scale(2.5);
+  }
+}
+
+@media (max-width: 796px) {
+  .bg-circle::before {
+    display: none;
+  }
+  .bg-circle-login::before {
+    display: none;
+  }
+  .container-fluid{
+    background-color: #ffdc9b;
+    height: 100vh;
+  }
+  .form-margin-left{
+    margin-left: 0%;
+    width: auto;
+  }
+}
+
+.btn {
+  background: black;
+  width: 100%;
+  height: 45px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #ffb633;
+  font-size: 16px;
+  color: black;
+  box-shadow: rgba(0, 0, 0, 0.4);
+}

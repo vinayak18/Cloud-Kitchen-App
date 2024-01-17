@@ -1,0 +1,181 @@
+<!-- LOGIN FORM CREATION -->
+<!-- <div class="background"></div> -->
+<app-screen-loader *ngIf="isLoaded"></app-screen-loader>
+<div class="container1">
+  <div class="item">
+    <div class="text-item mt-5 py-5">
+      <h2>Welcome! <br /><span> To Our Restaurant </span></h2>
+      <p>We provide pure veg authentic indian home-made food.</p>
+      <div class="social-icon">
+        <a href="https://www.facebook.com/ammakikadai/" target="_blank"
+          ><i class="bx bxl-facebook"></i
+        ></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-youtube"></i></a>
+        <a href="https://www.instagram.com/amma_ki_kadai/?hl=en" target="_blank"
+          ><i class="bx bxl-instagram"></i
+        ></a>
+        <a href="#"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="login-section">
+    <div class="form-box login" @myInsertRemoveTrigger *ngIf="switch">
+      <form [formGroup]="loginForm">
+        <h2>Sign In</h2>
+        <div class="input-box">
+          <span class="icon"><i class="bx bxs-envelope"></i></span>
+          <input type="text" formControlName="email" required />
+          <label>Email</label>
+        </div>
+        <div class="input-box">
+          <span class="icon"><i class="bx bxs-lock-alt"></i></span>
+          <input type="password" formControlName="password" required />
+          <div
+            class="form-error-messages"
+            id="error-no-password"
+            *ngIf="
+              loginForm.controls['password'].hasError('required') &&
+              loginForm.controls['password'].dirty
+            "
+          >
+            password invalid!
+          </div>
+          <label>Password</label>
+        </div>
+        <div class="remember-password">
+          <label for=""><input type="checkbox" />Remember Me</label>
+          <a [routerLink]="['/forget-password']">Forget Password?</a>
+        </div>
+        <button
+          class="btn"
+          [disabled]="loginForm.invalid"
+          type="submit"
+          (click)="validateUser()"
+        >
+          Login In
+        </button>
+        <div class="create-account">
+          <p>
+            Create A New Account?
+            <a class="register-link" (click)="toggle()">Sign Up</a>
+          </p>
+        </div>
+        <hr style="height: 5px; color: black" />
+        <div class="row">
+          <div class="ml-2" style="width: 44%;">
+          <asl-google-signin-button
+            type="standard"
+            size="medium"
+            text="signin_with"
+          ></asl-google-signin-button>
+          </div>
+          <div class="ml-2 col-6">
+            <button class="btn text-left" style="background-color: #3b5998; color: white; height: 32px;" width="180" type="standard" size="medium"
+              text="signin_with" (click)="signInWithFacebook()">
+              <i class="bx bxl-facebook-circle" style="margin-left: 2.5%"></i>
+              <span style="margin-left: 4%">Sign in with Facebook</span>
+            </button>
+          </div>
+        </div>
+        <!-- <section class="row">
+          <div class="col-6">
+            <cool-google-button color="dark">
+              Login with Google
+            </cool-google-button>
+          </div>
+          <div class="col-6">
+            <cool-facebook-button color="dark">
+              Login with Facebook
+            </cool-facebook-button>
+          </div>
+        </section> -->
+      </form>
+    </div>
+    <div class="form-box register" @myInsertRemoveTrigger *ngIf="!switch">
+      <form
+        style="margin-top: 22%"
+        [formGroup]="registerForm"
+        (ngSubmit)="registerUser()"
+      >
+        <h2>Sign Up</h2>
+
+        <div class="input-box">
+          <span class="icon"><i class="bx bxs-user"></i></span>
+          <input type="text" formControlName="name" required />
+          <label>Name</label>
+        </div>
+        <div class="input-box">
+          <span class="icon"><i class="bx bxs-envelope"></i></span>
+          <input type="text" formControlName="email" required />
+          <label>Email</label>
+        </div>
+        <div class="input-box">
+          <span class="icon"><i class="bx bxs-user"></i></span>
+          <input type="number" formControlName="phoneNo" required />
+          <label>Phone No.</label>
+        </div>
+        <div class="input-box">
+          <span class="icon"><i class="bx bxs-lock-alt"></i></span>
+          <input type="password" formControlName="password" required />
+          <div
+            class="form-error-messages"
+            id="error-no-password"
+            *ngIf="
+              registerForm.controls['password'].hasError('required') &&
+              registerForm.controls['password'].dirty
+            "
+          >
+            password invalid!
+          </div>
+          <label>Password</label>
+        </div>
+        <div class="remember-password">
+          <label for=""
+            ><input type="checkbox" />I agree with this statment</label
+          >
+        </div>
+        <button class="btn" [disabled]="registerForm.invalid">Register</button>
+        <div class="create-account">
+          <p>
+            Already Have An Account?
+            <a class="login-link" (click)="toggle()">Sign In</a>
+          </p>
+        </div>
+        <hr style="height: 5px; color: black" />
+        <div class="row">
+          <div class="ml-2" style="width: 44%;">
+            <asl-google-signin-button type="standard" size="medium" text="signup_with"></asl-google-signin-button>
+          </div>
+          <div class="ml-2 col-6">
+            <button class="btn text-left" style="background-color: #3b5998; color: white; height: 32px;" width="180"
+              type="standard" size="medium" text="signin_with" (click)="signInWithFacebook()">
+              <i class="bx bxl-facebook-circle" style="margin-left: 2.5%"></i>
+              <span style="margin-left: 4%">Sign up with Facebook</span>
+            </button>
+          </div>
+        </div>
+          <!-- <cool-google-button color="dark" (click)="signInWithGoogle()">
+              Login with Google
+            </cool-google-button> -->
+          
+          <!-- <cool-facebook-button color="dark" (click)="signInWithFacebook()">
+              Login with Facebook
+            </cool-facebook-button> -->
+      </form>
+    </div>
+  </div>
+</div>
+<!-- SIGN UP FORM CREATION -->
+<!-- <script>
+  const loginsec = document.querySelector('.login-section')
+  const loginlink = document.querySelector('.login-link')
+  const registerlink = document.querySelector('.register-link')
+  registerlink.addEventListener('click', () => {
+    loginsec.classList.add('active')
+  })
+  loginlink.addEventListener('click', () => {
+    loginsec.classList.remove('active')
+  })
+
+</script> -->

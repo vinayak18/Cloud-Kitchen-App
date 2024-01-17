@@ -1,0 +1,32 @@
+a,
+.subheading {
+  color: #ffb633;
+}
+.team-card {
+  position: relative;
+}
+.team-card:hover .team-desc {
+  height: 110px;
+}
+.team-card:hover .team-desc .team-social-links {
+  opacity: 1;
+}
+
+.team-desc {
+  position: absolute;
+  background: #fff;
+  width: auto;
+  left: 15px;
+  bottom: 15px;
+  right: 15px;
+  text-align: center;
+  padding: 15px;
+  height: 80px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.team-social-links {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}

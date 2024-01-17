@@ -1,0 +1,140 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12">
+        <span class="h6">Saved Addresses</span>
+        <button class="btn btn-warning pull-right" (click)="addNewAddress()">
+          New Address
+        </button>
+      </div>
+      <div class="col-12" *ngIf="isEditable">
+        <div class="list-group">
+          <form [formGroup]="addressFormGroup" class="mt-2 list-group-item">
+            <div class="row text-center">
+              <div class="col-sm-12">
+                <mat-form-field appearance="fill" class="st-address">
+                  <mat-label>Street Address</mat-label>
+                  <input
+                    matInput
+                    formControlName="streetAddress"
+                    placeholder="Ex. 1 Main St, New York, NY"
+                    required
+                    [(ngModel)]="presentAddress.streetAddress"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <mat-form-field appearance="fill" class="mat-frm-field">
+                  <mat-label>Flat No.</mat-label>
+                  <input
+                    matInput
+                    formControlName="flatNo"
+                    placeholder="Ex. 1 Main St, New York, NY"
+                    [(ngModel)]="presentAddress.flatNo"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <mat-form-field appearance="fill" class="mat-frm-field">
+                  <mat-label>Landmark</mat-label>
+                  <input
+                    matInput
+                    formControlName="landmark"
+                    placeholder="Ex. 1 Main St, New York, NY"
+                    [(ngModel)]="presentAddress.landmark"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <mat-form-field appearance="fill" class="mat-frm-field-70">
+                  <mat-label>City</mat-label>
+                  <input
+                    matInput
+                    formControlName="city"
+                    placeholder="Ex. 1 Main St, New York, NY"
+                    [(ngModel)]="presentAddress.city"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <mat-form-field appearance="fill" class="mat-frm-field-70">
+                  <mat-label>State</mat-label>
+                  <input
+                    matInput
+                    formControlName="state"
+                    placeholder="Ex. 1 Main St, New York, NY"
+                    [(ngModel)]="presentAddress.state"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <mat-form-field appearance="fill" class="mat-frm-field-70">
+                  <mat-label>Pincode</mat-label>
+                  <input
+                    matInput
+                    formControlName="pincode"
+                    placeholder="Ex. 1 Main St, New York, NY"
+                    [(ngModel)]="presentAddress.pincode"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-sm-12 text-right">
+                <button
+                  type="submit"
+                  mat-button
+                  class="btn btn-warning ml-5"
+                  (click)="saveAddressDetails()"
+                  [disabled]="addressFormGroup.invalid"
+                  [ngStyle]="{
+                    cursor: addressFormGroup.invalid ? 'not-allowed' : 'pointer'
+                  }"
+                >
+                  Save
+                </button>
+                <button
+                  mat-button
+                  class="btn btn-danger ml-2"
+                  (click)="cancel()"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-12">
+        <ul class="list-group mt-2">
+          <li class="list-group-item" *ngIf="currUser.address.length === 0">
+            No Address Available
+          </li>
+        </ul>
+        <ul
+          class="list-group mt-2"
+          *ngFor="let address of currUser.address; let id = index"
+        >
+          <li class="list-group-item">
+            {{ address.streetAddress }}, {{ address.flatNo }},
+            <br />
+            <span *ngIf="address.landmark">{{ address.landmark }}, </span>
+            {{ address.city }}-{{ address.pincode }}, {{ address.state }}.
+            <div class="mt-2">
+              <button
+                class="pull-right btn btn-danger ml-2"
+                (click)="deleteAddressDetails(id)"
+              >
+                Delete
+              </button>
+              <button
+                class="pull-right btn btn-warning"
+                (click)="editAddressDetails(address, id)"
+              >
+                Edit
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

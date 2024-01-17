@@ -1,0 +1,196 @@
+<app-screen-loader *ngIf="isLoaded"></app-screen-loader>
+<div class="container mb-2">
+  <h5 style="color: #ffb633" class="mt-2 border border-warning p-2 mb-3">
+    <b style="cursor: pointer" class="" (click)="backToPrevPage()"
+      ><i class="fas fa-arrow-left"></i
+    ></b>
+    <b class="ml-3">Order Details</b>
+  </h5>
+  <div class="card mb-3">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-sm-8">
+            <h6>Order Id: #{{ order.orderId }}</h6>
+          </div>
+          <div class="col-sm-4">
+            <h6 class="float-right" style="color: #ffb633; font-weight: bold">
+              {{ order.status }}
+            </h6>
+          </div>
+        </div>
+      </li>
+
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-sm-12">
+            <h6 class="" style="color: #ffb633; font-weight: bold">
+              @{{ order.userId }}
+            </h6>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <h6>Name: {{ order.customerInfo.name }}</h6>
+
+            <h6>Email: {{ order.customerInfo.email }}</h6>
+
+            <h6>Phone No: {{ order.customerInfo.phoneNo }}</h6>
+          </div>
+          <div class="col-sm-12 col-md-8">
+            <div class="row h6">
+              <div class="col-sm-3">{{ order.deliveryType }} Address:</div>
+              <div class="col-sm-8">
+                {{ order.customerInfo.deliveryAddress.streetAddress }},
+                {{ order.customerInfo.deliveryAddress.flatNo }},
+                <span *ngIf="order.customerInfo.deliveryAddress.landmark"
+                  >{{ order.customerInfo.deliveryAddress.landmark }},</span
+                >
+                {{ order.customerInfo.deliveryAddress.city }}-{{
+                  order.customerInfo.deliveryAddress.pincode
+                }},
+                {{ order.customerInfo.deliveryAddress.state }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr style="border-top: 2px dashed" />
+        <div class="" *ngIf="breakfastList.length !== 0">
+          <h6>BREAKFAST</h6>
+          <div class="" *ngFor="let item of breakfastList">
+            <div class="row mt-2">
+              <div class="col-sm-8">
+                <span>{{ item.quantity }} X {{ item.name }}</span>
+              </div>
+              <div class="col-sm-4">
+                <span class="float-right"
+                  >₹ {{ item.quantity * item.price }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <hr
+            *ngIf="
+              0 !== lunchList.length ||
+              0 !== dinnerList.length ||
+              0 !== specialDishList.length
+            "
+          />
+        </div>
+
+        <div class="mt-2" *ngIf="lunchList.length !== 0">
+          <h6>LUNCH</h6>
+          <div class="" *ngFor="let item of lunchList">
+            <div class="row mt-2">
+              <div class="col-sm-8">
+                <span>{{ item.quantity }} X {{ item.name }}</span>
+              </div>
+              <div class="col-sm-4">
+                <span class="float-right"
+                  >₹ {{ item.quantity * item.price }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <hr *ngIf="0 !== dinnerList.length || 0 !== specialDishList.length" />
+        </div>
+        <div class="mt-2" *ngIf="dinnerList.length !== 0">
+          <h6>DINNER</h6>
+          <div class="" *ngFor="let item of dinnerList">
+            <div class="row mt-2">
+              <div class="col-sm-8">
+                <span>{{ item.quantity }} X {{ item.name }}</span>
+              </div>
+              <div class="col-sm-4">
+                <span class="float-right"
+                  >₹ {{ item.quantity * item.price }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <hr *ngIf="0 !== specialDishList.length" />
+        </div>
+        <div class="mt-2" *ngIf="specialDishList.length !== 0">
+          <h6>Special DISH</h6>
+          <div class="" *ngFor="let item of specialDishList">
+            <div class="row mt-2">
+              <div class="col-sm-8">
+                <span>{{ item.quantity }} X {{ item.name }}</span>
+              </div>
+              <div class="col-sm-4">
+                <span class="float-right"
+                  >₹ {{ item.quantity * item.price }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr style="border-top: 2px dashed" />
+        <div class="row mt-2">
+          <div class="col-sm-8">
+            <h6>Item Total</h6>
+          </div>
+          <div class="col-sm-4">
+            <h6 class="float-right">₹ {{ order.actualAmount }}</h6>
+          </div>
+        </div>
+        <div
+          class="row mt-2"
+          *ngIf="null != order.coupon && 0 !== order.coupon.discountAmount"
+        >
+          <div class="col-sm-8">
+            <span>Discount ({{ order.coupon.couponCode }})</span>
+          </div>
+          <div class="col-sm-4">
+            <span class="float-right"
+              >- ₹ {{ order.coupon.discountAmount | number : "1.2-2" }}</span
+            >
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-8">
+            <span>Tax Amount</span>
+          </div>
+          <div class="col-sm-4">
+            <span class="float-right"
+              >₹ {{ order.tax | number : "1.2-2" }}</span
+            >
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-8">
+            <span>Delivery Fee</span>
+          </div>
+          <div class="col-sm-4">
+            <span class="float-right">₹ {{ order.deliveryFee }}</span>
+          </div>
+        </div>
+        <hr />
+        <div class="row mt-2">
+          <div class="col-sm-8">
+            <h6>Net Total</h6>
+          </div>
+          <div class="col-sm-4">
+            <h6 class="float-right" style="color: #ffb633; font-weight: bold">
+              ₹ {{ order.netAmount }}
+            </h6>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-sm-8 mt-2">
+            <h6>{{ order.dateOfOrder | date : "MMMM dd, y 'at' h:mm a" }}</h6>
+          </div>
+          <div class="col-sm-4">
+            <button
+              type="submit"
+              class="btn float-right"
+              style="background-color: #ffb633"
+            >
+              Print Invoice
+            </button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

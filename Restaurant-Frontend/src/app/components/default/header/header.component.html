@@ -1,0 +1,122 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="logo1 navbar-brand mr-auto" [routerLink]="['home']"
+    ><img src="../assets/img/logo-4.png" alt="" height="60px"
+  /></a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['home']"
+          >Home <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['about']"
+          >About</a
+        >
+      </li>
+      <li class="nav-item dropdown">
+        <!-- <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Special Dishes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item">Momo</a>
+          <a class="dropdown-item">Pizza</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item">more...</a>
+        </div> -->
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          [routerLink]="['special-dishes']"
+          >Special Dishes</a
+        >
+      </li>
+    </ul>
+
+    <a class="logo2 navbar-nav mr-auto" [routerLink]="['/home']"
+      ><img src="../assets/img/logo-4.png" alt="" height="60px"
+    /></a>
+
+    <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+    <ul class="navbar-nav mr-auto my-2 my-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['menu']"
+          >Menu <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['cart']"
+          >Cart</a
+        >
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Orders
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['order/active']"
+            >Active Orders</a
+          >
+          <a class="dropdown-item" [routerLink]="['order/past']">Past Orders</a>
+        </div>
+        <!-- <a class="nav-link" [routerLink]="['order']">Orders</a> -->
+      </li>
+    </ul>
+    <div class="navbar-nav user-info">
+      <div *ngIf="!isLoggedIn" class="">
+        <a
+          class="btn btn-sm"
+          [routerLink]="['login']"
+          role="button"
+          style="background-color: #ffb633; color: black"
+          >Login/Register</a
+        >
+      </div>
+      <div *ngIf="isLoggedIn" class="dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Hi {{ firstName }}!
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/account/',currUser.userId]">My Account</a>
+          <a class="dropdown-item">Payments</a>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+        <!-- <button mat-button [matMenuTriggerFor]="beforeMenu">Hi Vinayak</button>
+        <mat-menu #beforeMenu="matMenu" [overlapTrigger]="true" xPosition="before" class="before-menu">
+          <button mat-menu-item>My Account</button>
+          <button mat-menu-item>Payments & Refunds</button>
+        </mat-menu> -->
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,129 @@
+<app-screen-loader *ngIf="isLoaded"></app-screen-loader>
+<div class="wrapper">
+  <section class="container-fluid bg-circle-login" id="auth-sign">
+    <div class="row align-items-center">
+      <div class="col-md-12 col-lg-7 col-xl-4">
+        <div class="card-body">
+          <a>
+            <img
+              src="./assets/img/logo-4.png"
+              class="img-fluid logo-img"
+              alt="img4"
+            />
+          </a>
+          <div class="form-margin-left">
+            <h2
+              class="mb-2 text-center"
+              style="font-family: 'Lucida Console', 'Courier New', monospace"
+            >
+              Sign In
+            </h2>
+            <p
+              class="text-center"
+              style="font-family: 'Lucida Console', 'Courier New', monospace"
+            >
+              Sign in to stay connected.
+            </p>
+            <form [formGroup]="loginForm">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                      type="email"
+                      class="form-control form-control-sm"
+                      id="email"
+                      aria-describedby="email"
+                      placeholder=" "
+                      formControlName="email"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                      type="password"
+                      class="form-control form-control-sm"
+                      id="password"
+                      aria-describedby="password"
+                      placeholder=" "
+                      formControlName="password"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-12 d-flex justify-content-between">
+                  <div class="form-check mb-3">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="customCheck1"
+                    />
+                    <label class="form-check-label" for="customCheck1"
+                      >Remember Me</label
+                    >
+                  </div>
+                  <a>Forgot Password?</a>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button
+                  type="submit"
+                  class="btn btn-warning"
+                  (click)="validateUser()"
+                >
+                  Sign In
+                </button>
+              </div>
+              <p class="text-center my-3">or sign in with other accounts?</p>
+              <section>
+                <!-- <cool-google-button color="dark" (click)="signInWithGoogle()">
+                                          Login with Google
+                                        </cool-google-button> -->
+                <asl-google-signin-button
+                  type="standard"
+                  size="medium"
+                  text="signup_with"
+                ></asl-google-signin-button>
+                <!-- <cool-facebook-button color="dark" (click)="signInWithFacebook()">
+                                          Login with Facebook
+                                        </cool-facebook-button> -->
+              </section>
+              <section class="mt-2">
+                <button
+                  class="btn text-left"
+                  style="background-color: #3b5998; color: white"
+                  width="400"
+                  type="standard"
+                  size="medium"
+                  text="signup_with"
+                >
+                  <i
+                    class="bx bxl-facebook-circle"
+                    style="margin-left: 2.5%"
+                  ></i>
+                  <span style="margin-left: 28%">Sign up with Facebook</span>
+                </button>
+              </section>
+              <p class="mt-3 text-center">
+                Don’t have an account?
+                <a class="text-underline" style="color: #ffb633"
+                  >Click here to sign up.</a
+                >
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-md-12 col-lg-5 col-xl-8 d-lg-block d-none vh-100 overflow-hidden"
+      >
+        <img
+          src="./assets/img/09.png"
+          class="img-fluid sign-in-img"
+          alt="images"
+        />
+      </div>
+    </div>
+  </section>
+</div>

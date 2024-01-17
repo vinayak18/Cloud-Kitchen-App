@@ -1,0 +1,6 @@
+export enum foodType {
+  BREAKFAST = 'BREAKFAST',
+  LUNCH = 'LUNCH',
+  DINNER = 'DINNER',
+  SPECIAL_DISH = 'SPECIAL_DISH',
+}

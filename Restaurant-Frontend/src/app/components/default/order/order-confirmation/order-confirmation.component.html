@@ -1,0 +1,28 @@
+<app-screen-loader *ngIf="isLoaded"></app-screen-loader>
+<div class="container">
+    <div class="text-center p-4 ml-5 mr-5 mb-5 mt-2" style="border: 1px solid #ffb633;">
+        <div>
+          <div class="row">
+            <h1 class="col-12 thank-you">Thank you for your order</h1>
+            <div class="col-12 text-center">
+              <i class="material-icons md-36">check_circle</i>
+              <h6 class="">Order Confirmed!</h6>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <b>Order Id:</b>
+               {{orderSummary.orderId}}
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <b>Date:</b> 
+              {{orderSummary.dateOfOrder | date: 'MMMM dd, y \'at\' h:mm a'}}
+            </div>
+            <div class="col-12 text-center mt-3">
+              <button mat-button class="btn btn-warning" (click)="goToMenu()">Continue Shopping <i
+                  class="fa fa-angle-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

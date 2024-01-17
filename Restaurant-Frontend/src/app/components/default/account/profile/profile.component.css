@@ -1,0 +1,11 @@
+.form-control:disabled:hover{
+    cursor: not-allowed;
+}
+
+.readonly-wrapper {
+    cursor: not-allowed;
+}
+
+.readonly-wrapper .readonly-block {
+    pointer-events: none;
+}

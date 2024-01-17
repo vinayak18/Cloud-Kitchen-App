@@ -1,0 +1,22 @@
+h6 {
+  color: #ffb633;
+}
+.img-bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+/* .shadow {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+} */
+@media (max-width: 767px) {
+  .img-bg {
+    height: 300px;
+    width: 100%;
+  }
+}
+@media (max-width: 992px) {
+  .mt-5 {
+    margin-top: 1px !important;
+  }
+}

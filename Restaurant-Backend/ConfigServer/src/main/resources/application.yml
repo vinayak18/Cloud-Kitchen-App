@@ -1,0 +1,29 @@
+#Server port
+server:
+  port: 8087
+
+#Git repo location
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/vinayak18/Cloud-Configuration.git
+          default-label: master
+          #Verify any repository issue in service startup
+          clone-on-start: true
+          search-paths: UserService,ProductService,MessagingService,FeedbackService,ApiGateway
+ 
+#Disable security of the Management endpoint
+management:
+  security:
+    enabled: false
+    
+eureka:
+   client:
+      serviceUrl:
+         defaultZone: http://localhost:8761/eureka
+      instance:
+        preferIpAddress: true

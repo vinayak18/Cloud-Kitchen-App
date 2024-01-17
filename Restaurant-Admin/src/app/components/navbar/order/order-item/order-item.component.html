@@ -1,0 +1,238 @@
+<app-screen-loader *ngIf="isLoaded"></app-screen-loader>
+<div class="container-fluid">
+  <div class="row my-3 mx-2 card-style">
+    <div class="col-12 pt-3 card-header">
+      <h4 class="card-title font-weight-bold">
+        <b style="cursor: pointer" class="" [routerLink]="['../']"
+          ><i class="fas fa-arrow-left"></i
+        ></b>
+        <b class="ml-3">Order Details ( #{{ orderId }} )</b>
+      </h4>
+    </div>
+    <div class="ml-auto mr-auto mt-2 mb-2 col-xs-12 content-font">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-sm-8">
+              <h6>Order Id: #{{ orderDetails.orderId }}</h6>
+            </div>
+            <div class="col-sm-4">
+              <span
+                class="float-right bg-success text-light cursor-pointer badge"
+                mat-button
+                [matMenuTriggerFor]="afterMenu"
+                [ngClass]="
+                  orderDetails.status === 'DECLINED' ||
+                  orderDetails.status === 'CANCELLED'
+                    ? 'bg-danger'
+                    : orderDetails.status === 'DELIVERED'
+                    ? 'bg-sucess'
+                    : orderDetails.status === 'PLACED'
+                    ? 'bg-info'
+                    : 'bg-warning'
+                "
+              >
+                {{ orderDetails.status | uppercase }}
+              </span>
+              <mat-menu #afterMenu="matMenu" xPosition="after">
+                <button
+                  mat-menu-item
+                  *ngFor="let st of status"
+                  (click)="changeStatus(st)"
+                >
+                  {{ st }}
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-sm-12">
+              <h6 class="" style="color: #ffb633; font-weight: bold">
+                @{{ orderDetails.userId }}
+              </h6>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <h6>Name: {{ orderDetails.customerInfo.name }}</h6>
+
+              <h6>Email: {{ orderDetails.customerInfo.email }}</h6>
+
+              <h6>Phone No: {{ orderDetails.customerInfo.phoneNo }}</h6>
+            </div>
+            <div class="col-sm-12 col-md-8">
+              <div class="row h6">
+                <div class="col-sm-3">
+                  {{ orderDetails.deliveryType }} Address:
+                </div>
+                <div class="col-sm-8">
+                  {{ orderDetails.customerInfo.deliveryAddress.streetAddress }},
+                  {{ orderDetails.customerInfo.deliveryAddress.flatNo }},
+                  <span
+                    *ngIf="orderDetails.customerInfo.deliveryAddress.landmark"
+                    >{{
+                      orderDetails.customerInfo.deliveryAddress.landmark
+                    }},</span
+                  >
+                  {{ orderDetails.customerInfo.deliveryAddress.city }}-{{
+                    orderDetails.customerInfo.deliveryAddress.pincode
+                  }},
+                  {{ orderDetails.customerInfo.deliveryAddress.state }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr style="border-top: 2px dashed" />
+          <div class="" *ngIf="breakfastList.length !== 0">
+            <h6>BREAKFAST</h6>
+            <div class="" *ngFor="let item of breakfastList">
+              <div class="row mt-2">
+                <div class="col-sm-8">
+                  <span>{{ item.quantity }} X {{ item.name }}</span>
+                </div>
+                <div class="col-sm-4">
+                  <span class="float-right"
+                    >₹ {{ item.quantity * item.price }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <hr
+              *ngIf="
+                0 !== lunchList.length ||
+                0 !== dinnerList.length ||
+                0 !== specialDishList.length
+              "
+            />
+          </div>
+
+          <div class="mt-2" *ngIf="lunchList.length !== 0">
+            <h6>LUNCH</h6>
+            <div class="" *ngFor="let item of lunchList">
+              <div class="row mt-2">
+                <div class="col-sm-8">
+                  <span>{{ item.quantity }} X {{ item.name }}</span>
+                </div>
+                <div class="col-sm-4">
+                  <span class="float-right"
+                    >₹ {{ item.quantity * item.price }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <hr
+              *ngIf="0 !== dinnerList.length || 0 !== specialDishList.length"
+            />
+          </div>
+          <div class="mt-2" *ngIf="dinnerList.length !== 0">
+            <h6>DINNER</h6>
+            <div class="" *ngFor="let item of dinnerList">
+              <div class="row mt-2">
+                <div class="col-sm-8">
+                  <span>{{ item.quantity }} X {{ item.name }}</span>
+                </div>
+                <div class="col-sm-4">
+                  <span class="float-right"
+                    >₹ {{ item.quantity * item.price }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <hr *ngIf="0 !== specialDishList.length" />
+          </div>
+          <div class="mt-2" *ngIf="specialDishList.length !== 0">
+            <h6>Special DISH</h6>
+            <div class="" *ngFor="let item of specialDishList">
+              <div class="row mt-2">
+                <div class="col-sm-8">
+                  <span>{{ item.quantity }} X {{ item.name }}</span>
+                </div>
+                <div class="col-sm-4">
+                  <span class="float-right"
+                    >₹ {{ item.quantity * item.price }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr style="border-top: 2px dashed" />
+          <div class="row mt-2">
+            <div class="col-sm-8">
+              <h6>Item Total</h6>
+            </div>
+            <div class="col-sm-4">
+              <h6 class="float-right">₹ {{ orderDetails.actualAmount }}</h6>
+            </div>
+          </div>
+          <div
+            class="row mt-2"
+            *ngIf="
+              null != orderDetails.coupon &&
+              0 !== orderDetails.coupon.discountAmount
+            "
+          >
+            <div class="col-sm-8">
+              <span>Discount ({{ orderDetails.coupon.couponCode }})</span>
+            </div>
+            <div class="col-sm-4">
+              <span class="float-right"
+                >- ₹
+                {{
+                  orderDetails.coupon.discountAmount | number : "1.2-2"
+                }}</span
+              >
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-sm-8">
+              <span>Tax Amount</span>
+            </div>
+            <div class="col-sm-4">
+              <span class="float-right"
+                >₹ {{ orderDetails.tax | number : "1.2-2" }}</span
+              >
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-sm-8">
+              <span>Delivery Fee</span>
+            </div>
+            <div class="col-sm-4">
+              <span class="float-right">₹ {{ orderDetails.deliveryFee }}</span>
+            </div>
+          </div>
+          <hr />
+          <div class="row mt-2">
+            <div class="col-sm-8">
+              <h6>Net Total</h6>
+            </div>
+            <div class="col-sm-4">
+              <h6 class="float-right" style="color: #ffb633; font-weight: bold">
+                ₹ {{ orderDetails.netAmount }}
+              </h6>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-sm-8 mt-2">
+              <h6>
+                {{ orderDetails.dateOfOrder | date : "MMMM dd, y 'at' h:mm a" }}
+              </h6>
+            </div>
+            <div class="col-sm-4">
+              <button
+                type="submit"
+                class="btn float-right"
+                style="background-color: #ffb633"
+              >
+                Print Invoice
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: ProductService
+  config:
+    import: configserver:http://localhost:8087
+  profiles:
+    active: default
+ 
+management:
+  security:
+    enabled: false

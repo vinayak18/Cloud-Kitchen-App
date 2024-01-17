@@ -1,0 +1,238 @@
+<div class="container-fluid">
+  <div class="row" id="wrapper">
+    <div
+      id="sidebar-wrapper"
+      class="col-xs-4 vh-100 pt-2"
+      style="background-color: white; width: 20%"
+    >
+      <img
+        src="./assets/img/logo1.jpeg"
+        alt=""
+        class="img-fluid pr-2"
+        style="overflow: hidden"
+      />
+      <hr />
+      <ul
+        class="nav navbar-nav ml-3 mr-auto flex-column vertical-nav nav-style pr-3"
+      >
+        <li
+          class="nav-item"
+          routerLinkActive="active rounded-pill"
+          routerLink="/dashboard"
+        >
+          <a
+            class="nav-link pl-2"
+            routerLinkActive="active rounded-pill"
+            routerLink="/dashboard"
+            >Dashboard</a
+          >
+        </li>
+        <span style="border-top: 1px dashed black" class="mt-2 mb-2"></span>
+        <li class="nav-item">
+          <a
+            class="nav-link pl-2"
+            role="button"
+            (click)="menuStyles = !menuStyles"
+          >
+            Menu
+            <span *ngIf="!menuStyles; else down">
+              <i class="fa fa-chevron-down pull-right pt-1 pr-2"></i>
+            </span>
+            <ng-template #down>
+              <i class="fa fa-chevron-right pull-right pt-1 pr-2"></i>
+            </ng-template>
+          </a>
+          <div class="nav-item" [ngClass]="{ collapse: menuStyles }">
+            <a
+              class="nav-link"
+              [routerLink]="['menu', 'breakfast']"
+              routerLinkActive="active rounded-pill"
+            >
+              <i class="icon ml-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <g>
+                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                  </g>
+                </svg>
+              </i>
+              Breakfast
+            </a>
+            <a
+              class="nav-link"
+              [routerLink]="['menu', 'lunch']"
+              routerLinkActive="active rounded-pill"
+            >
+              <i class="icon ml-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <g>
+                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                  </g>
+                </svg>
+              </i>
+              Lunch
+            </a>
+            <a
+              class="nav-link"
+              [routerLink]="['menu', 'dinner']"
+              routerLinkActive="active rounded-pill"
+              ><i class="icon ml-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <g>
+                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                  </g>
+                </svg>
+              </i>
+              Dinner
+            </a>
+            <a
+              class="nav-link"
+              [routerLink]="['menu', 'special_dish']"
+              routerLinkActive="active rounded-pill"
+              ><i class="icon ml-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <g>
+                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                  </g>
+                </svg>
+              </i>
+              Speacial Dishes
+            </a>
+          </div>
+        </li>
+        <span style="border-top: 1px dashed black" class="mt-2 mb-2"></span>
+        <li class="nav-item">
+          <a
+            class="nav-link pl-2"
+            role="button"
+            (click)="orderStyles = !orderStyles"
+          >
+            Orders
+            <span *ngIf="!orderStyles; else down">
+              <i class="fa fa-chevron-down pull-right pt-1 pr-2"></i>
+            </span>
+            <ng-template #down>
+              <i class="fa fa-chevron-right pull-right pt-1 pr-2"></i>
+            </ng-template>
+          </a>
+          <div class="nav-item" [ngClass]="{ collapse: orderStyles }">
+            <a
+              class="nav-link"
+              [routerLink]="['order', 'active']"
+              routerLinkActive="active rounded-pill"
+            >
+              <i class="icon ml-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <g>
+                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                  </g>
+                </svg>
+              </i>
+              Active
+            </a>
+            <a
+              class="nav-link"
+              [routerLink]="['order', 'past']"
+              routerLinkActive="active rounded-pill"
+            >
+              <i class="icon ml-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <g>
+                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                  </g>
+                </svg>
+              </i>
+              Past
+            </a>
+          </div>
+        </li>
+        <span style="border-top: 1px dashed black" class="mt-2 mb-2"></span>
+        <li
+          class="nav-item"
+          routerLinkActive="active rounded-pill"
+          routerLink="/customer"
+        >
+          <a
+            class="nav-link pl-2"
+            routerLinkActive="active rounded-pill"
+            routerLink="/customer"
+            >Customers</a
+          >
+        </li>
+        <span style="border-top: 1px dashed black" class="mt-2 mb-2"></span>
+        <li
+          class="nav-item"
+          routerLinkActive="active rounded-pill"
+          routerLink="/restaurant/team"
+        >
+          <a
+            class="nav-link pl-2"
+            routerLinkActive="active rounded-pill"
+            routerLink="/restaurant/team"
+            >Restaurant Team</a
+          >
+        </li>
+        <span style="border-top: 1px dashed black" class="mt-2 mb-2"></span>
+        <li
+          class="nav-item"
+          routerLinkActive="active rounded-pill"
+          routerLink="/product/review"
+        >
+          <a
+            class="nav-link pl-2"
+            routerLinkActive="active rounded-pill"
+            routerLink="/product/review"
+            >Reviews</a
+          >
+        </li>
+        <span style="border-top: 1px dashed black" class="mt-2 mb-2"></span>
+        <li
+          class="nav-item"
+          routerLinkActive="active rounded-pill"
+          routerLink="/restaurant/feedback"
+        >
+          <a
+            class="nav-link pl-2"
+            routerLinkActive="active rounded-pill"
+            routerLink="/restaurant/feedback"
+            >Feedback</a
+          >
+        </li>
+        <span style="border-top: 1px dashed black" class="mt-2 mb-2"></span>
+      </ul>
+    </div>
+    <div class="col-xs-6 mh-100" style="background-color: #fef4e5; width: 80%">
+      <app-header></app-header>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

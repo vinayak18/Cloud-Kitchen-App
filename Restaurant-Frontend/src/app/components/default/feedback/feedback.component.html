@@ -1,0 +1,51 @@
+<section id="gtco-reservation" class="mt-4 bg-fixed bg-white section-padding overlay"
+  style="background-image: url(../../assets/img/reservation-bg.jpg);">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="section-content bg-white p-5">
+          <div class="heading-section text-center">
+            <span class="subheading" style="font-weight: bold; color: #ffb633;">
+              Feedback
+            </span>
+            <h2>
+              Customer Survey!
+            </h2>
+          </div>
+          <form method="post" name="contact-us" [formGroup]="feedbackForm">
+            <div class="row">
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
+              </div>
+              <div class="col-md-12 form-group">
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+              </div>
+              <div class="col-md-12 form-group">
+                <input type="number" class="form-control" id="phoneNumber" formControlName="phoneNumber" placeholder="Phone">
+              </div>
+              <div class="col-md-12 form-group">
+                <select class="form-control" formControlName="rating" id="selectRating">
+                  <option selected disabled hidden>Rating</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+
+              <div class="col-md-12 form-group">
+                <textarea class="form-control" id="message" formControlName="message" rows="6"
+                  placeholder="Your Message ..."></textarea>
+              </div>
+              <div class="col-md-12 text-center">
+                <button class="btn btn-warning btn-shadow btn-lg" [disabled]="feedbackForm.invalid" type="submit" name="submit" (click)="sendFeedback()">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

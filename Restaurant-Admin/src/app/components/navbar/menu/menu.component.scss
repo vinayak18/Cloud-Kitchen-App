@@ -1,0 +1,77 @@
+.card-style {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid rgb(215, 215, 215);
+}
+
+.card-title {
+  font-family: "Lucida Handwriting", "Gill Sans", "Gill Sans MT", "Calibri",
+    "Trebuchet MS", sans-serif;
+  color: #ffb633;
+}
+
+.card-body-title {
+  color: #ffb633;
+  font-weight: bold;
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
+    sans-serif;
+}
+
+.card-body {
+  background-color: #fef4e5;
+  border-radius: 1rem;
+  border: 1px solid #ffb633;
+  padding-top: 18%;
+}
+
+.card-selected {
+  background-color: #ffe3af;
+  .card-body-title {
+    color: black;
+  }
+}
+
+.card-body:hover {
+  background-color: #ffe3af;
+}
+
+.card-body:hover .card-body-title {
+  color: black;
+}
+
+.mat-mdc-slide-toggle.mat-primary {
+  --mdc-switch-selected-focus-state-layer-color: #fef4e5;
+  --mdc-switch-selected-handle-color: white;
+  --mdc-switch-selected-hover-state-layer-color: #fef4e5;
+  --mdc-switch-selected-pressed-state-layer-color: #fef4e5;
+  --mdc-switch-selected-focus-handle-color: white;
+  --mdc-switch-selected-hover-handle-color: white;
+  --mdc-switch-selected-pressed-handle-color: white;
+  --mdc-switch-selected-focus-track-color: #fef4e5;
+  --mdc-switch-selected-hover-track-color: #fef4e5;
+  --mdc-switch-selected-pressed-track-color: #fef4e5;
+  --mdc-switch-selected-track-color: #fef4e5;
+  --mdc-switch-unselected-icon-color: black;
+  --mdc-switch-unselected-handle-color: black;
+  --mdc-switch-unselected-focus-handle-color: black;
+  --mdc-switch-unselected-hover-handle-color: black;
+  --mdc-switch-unselected-pressed-handle-color: black;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}

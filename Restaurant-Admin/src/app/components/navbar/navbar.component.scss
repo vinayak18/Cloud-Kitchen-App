@@ -1,0 +1,72 @@
+.nav-link {
+  color: black;
+}
+
+.active {
+  background-color: #ffb633;
+}
+
+.nav-style {
+  font-size: 18px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.nav-link:not(.active):hover {
+  background-color: #fef4e5;
+  color: #ffb633;
+  border-radius: 50rem;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+  overflow: hidden;
+}
+
+#sidebar-wrapper {
+  width: 0;
+  height: 100%;
+  //margin-left: -250px;
+  overflow-y: auto;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar-wrapper::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+#sidebar-wrapper::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#sidebar-wrapper::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #F90;	
+	background-image: -webkit-linear-gradient(45deg,
+	                                          rgba(255, 255, 255, .2) 25%,
+											  transparent 25%,
+											  transparent 50%,
+											  rgba(255, 255, 255, .2) 50%,
+											  rgba(255, 255, 255, .2) 75%,
+											  transparent 75%,
+											  transparent)
+}

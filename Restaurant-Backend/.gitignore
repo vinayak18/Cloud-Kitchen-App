@@ -1,0 +1,8 @@
+/.metadata/
+MessagingService/mvnw
+MessagingService/.mvn/wrapper/maven-wrapper.jar
+*.jar
+MessagingService/.mvn/wrapper/maven-wrapper.properties
+MessagingService/mvnw.cmd
+*.jar
+MessagingService/.mvn/wrapper/maven-wrapper.jar

@@ -1,0 +1,8 @@
+<h2 mat-dialog-title><strong>{{data.title}}</strong></h2>
+<mat-dialog-content class="mat-typography">
+    <h3>{{data.msg}}</h3>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button class="btn btn-outline-warning" mat-button (click)="dialogResult()">Yes</button>
+    <button class="ms-2 btn btn-outline-warning" mat-button mat-dialog-close cdkFocusInitial>No</button>
+</mat-dialog-actions>

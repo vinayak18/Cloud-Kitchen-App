@@ -1,0 +1,93 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-3">
+        <p class="mb-0">Full Name</p>
+      </div>
+      <div class="col-sm-9">
+        <p class="text-muted mb-0">{{ currUser.name }}</p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-sm-3">
+        <p class="mb-0">Email</p>
+      </div>
+      <div class="col-sm-9">
+        <p class="text-muted mb-0">{{ currUser.email }}</p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-sm-3">
+        <p class="mb-0">Phone</p>
+      </div>
+      <div class="col-sm-9">
+        <input
+          type="text"
+          class="form-control"
+          value="{{ '0' != currUser.phoneNo ? currUser.phoneNo : '' }}"
+          placeholder="please add your phone number"
+          [disabled]="!isEditable"
+          #phoneNo
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-sm-3">
+        <p class="mb-0">Address</p>
+      </div>
+      <div class="col-sm-9">
+        <mat-form-field
+          class="form-control"
+          [ngClass]="{ 'readonly-wrapper': !isEditable }"
+        >
+          <mat-label>Primary Address</mat-label>
+          <mat-select
+            [(ngModel)]="primaryAddress"
+            [ngClass]="{ 'readonly-block': !isEditable }"
+            name="primaryAddress"
+            disableOptionCentering
+            [disabled]="!isEditable"
+          >
+            <mat-option
+              *ngIf="currUser.address.length === 0"
+              value="No Address Available"
+              disabled="true"
+            >
+              No Address Available
+            </mat-option>
+            <mat-option
+              *ngFor="let address of currUser.address"
+              [value]="address"
+            >
+              {{ address.streetAddress }}, {{ address.flatNo }},
+              {{ address.landmark }}, {{ address.city }}-{{ address.pincode }},
+              {{ address.state }}.
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-sm-12">
+        <button
+          class="btn btn-warning pull-right"
+          *ngIf="!isEditable"
+          (click)="isEditable = true"
+        >
+          Edit
+        </button>
+        <button
+          class="btn btn-dark pull-right"
+          *ngIf="isEditable"
+          (click)="saveChanges()"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: ApiGateway
+  cloud:
+    gateway:
+      routes:
+      - id: FeedbackService
+        uri: lb://FeedbackService
+        predicates:
+        - Path=/api/v1/feedbackservice/**
+      - id: MessagingService
+        uri: lb://MessagingService
+        predicates:
+        - Path=/api/v1/messagingservice/**
+      - id: ProductService
+        uri: lb://ProductService
+        predicates:
+        - Path=/api/v1/productservice/**
+      - id: UserService
+        uri: lb://UserService
+        predicates:
+        - Path=/api/v1/userservice/**
+#  sleuth:
+#    sampler:
+#      probability: 1.0 #Spring-Boot-2
+  config:
+    import: configserver:http://localhost:8087
+  profiles:
+    active: default     
+ 
+management:
+  security:
+    enabled: false

@@ -1,0 +1,28 @@
+@media (max-width: 991px) {
+  .logo1 {
+    display: block !important;
+  }
+  .logo2 {
+    display: none !important;
+  }
+}
+@media (min-width: 992px) {
+  .logo1 {
+    display: none !important;
+  }
+  .logo2 {
+    display: block !important;
+  }
+  .user-info {
+    margin-right: 50px;
+  }
+}
+
+.dropdown-item:hover {
+  background-color: #ffb633;
+}
+
+/* .before-menu {
+  width: 100px !important;
+  min-width: unset !important;
+} */

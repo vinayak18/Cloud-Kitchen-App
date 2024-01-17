@@ -1,0 +1,138 @@
+<app-screen-loader *ngIf="isLoaded"></app-screen-loader>
+<section id="gtco-welcome" class="mt-5 mb-5 bg-white section-padding">
+  <div class="container">
+    <div class="section-content">
+      <div class="row">
+        <div class="col-sm-12 col-md-5">
+          <div class=" row">
+            <div class="col-12 mb-2">
+              <a href="#" class="thumb-menu">
+                <img class="img-fluid img-cover" [src]="selectedImage" />
+              </a>
+            </div>
+            <div class="col-3 mt-2" *ngFor="let url of product.img_url" (click)="changeSelectedImage(url)">
+              <a class="thumb-menu">
+                <img class="img-fluid img-cover" [src]="url"
+                  [ngStyle]="selectedImage===url?{'filter': 'blur('+ 1+'px)'} : {'border': '2px solid #ffb633'}">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-7 py-4 pl-md-0 pl-4">
+          <div class="heading-section pl-lg-5 ml-md-5">
+            <span class="subheading" style="color: #ffb633;">
+              <b>Product Details</b>
+              <hr style="border: 1px solid #ffb633">
+            </span>
+
+            <h2>
+              {{product.name}}
+            </h2>
+          </div>
+          <div class="pl-lg-5 ml-md-5">
+            <p>{{product.desc}}</p>
+          </div>
+          <div class="row pl-lg-5 ml-md-4">
+            <div class="col-12 ml-md-2 mb-3">
+              M.R.P - <span class="h4">₹ {{product.price}}</span>
+            </div>
+            <div class="col-6 ml-md-2">
+              <button class="plusminus" [disabled]="product.quantity===1" (click)="handleMinus()">-</button>
+              <input type="text" class="num" value="0" [(ngModel)]="product.quantity" />
+              <button class="plusminus" (click)="handlePlus()">+</button>
+            </div>
+            <div class="col-4">
+              <button type="submit" class="btn float-left" style="background-color: #ffb633;" (click)="addToCart()">Add to Cart</button>
+            </div>
+          </div>
+          <div class="row pl-lg-5 mt-4 m-left">
+            <span class="col-12" style="color: #ffb633;">
+              <b>Bestsellers</b>
+              <hr style="border: 1px solid #ffb633">
+            </span>
+            <div class="col-4" *ngFor="let item of bestseller">
+              <a [routerLink]="['/menu/product',item.pid]" class="thumb-menu text-center underline">
+                <img class="img-fluid img-cover" [src]="item.img_url[0]" style="height: 80%;" />
+                <h6>{{item.name}}</h6>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row section-content mt-4">
+      <div class="col-12 heading-section review-left">
+        <span class="subheading" style="color: #ffb633;">
+          <b>Reviews ({{productReview.noOfRating}})</b>
+          <button type="submit" class="btn float-right" style="background-color: #ffb633;" (click)="reviewSection()">Add
+            Review</button>
+          <hr style="border: 1px solid #ffb633">
+        </span>
+      </div>
+      <div class="col-12 mb-3" *ngIf="reviewFlag">
+        <div class="card p-3" style="background-color: #F7F7F7;">
+          <form name="contact-us" (ngSubmit)="addReview()">
+            <div class="row">
+              <div class="col-md-12 form-group">
+                <select class="form-control" id="rating" name="rating" [(ngModel)]="reviewForm.userRating" required>
+                  <option selected disabled hidden [value]="0">Rating</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+
+              <div class="col-md-12 form-group">
+                <textarea class="form-control" id="message" name="message" rows="6" placeholder="Your Message ..."
+                  [(ngModel)]="reviewForm.review" required></textarea>
+              </div>
+              <div class="col-md-12">
+                <button type="submit" class="btn" style="background-color: #ffb633;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-12" *ngIf="productReview.userReview.length === 0">
+        <div class="card mb-2">
+          <div class="card-header">
+            <p class="card-text">No Review Available!</p>
+          </div>
+          <!-- <div class="card-body">
+            <p class="card-text">No Review Available!</p>
+          </div> -->
+        </div>
+      </div>
+      <div class="col-12" *ngIf="productReview.userReview.length > 0">
+        <div class="card mb-2"
+          *ngFor="let review of productReview.userReview | paginate: { id: 'page', itemsPerPage: reviewPerPage, currentPage: pageNo }">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-1 text-right">
+                <img class="review-img" [src]="review.img_url" alt="" height="50px" width="50px">
+              </div>
+              <div class="col-8 mt-2 font-weight-bold review-username">
+                {{review.name}}
+              </div>
+              <div class="col-3 mt-2 text-right font-weight-bold text-success">
+                {{review.userRating}} &#9733;
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{review.review}}</p>
+            <!-- <hr> -->
+            <span style="float: right;"><strong>{{review.dateOfReview | date: 'MMMM dd, y \'at\' h:mm a'}}</strong></span>
+          </div>
+        </div>
+        <div class="text-right mt-4" *ngIf="productReview.userReview.length > 3">
+          <pagination-controls id="page" (pageChange)="pageNo = $event">
+          </pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

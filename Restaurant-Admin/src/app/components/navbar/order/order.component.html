@@ -1,0 +1,107 @@
+<app-screen-loader *ngIf="isLoaded"></app-screen-loader>
+<div class="container-fluid mt-3 content-inner">
+  <div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between">
+            <div class="header-title pt-2">
+              <h4 class="card-title font-weight-bold">
+                {{ orderType | titlecase }} Orders
+              </h4>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive text-center">
+              <table class="table table-striped">
+                <thead>
+                  <tr class="trow">
+                    <th scope="col">Order Id</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Contact Info</th>
+                    <th scope="col">Net Amount</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col">Date Of Order</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let order of orders">
+                    <td>{{ order.orderId }}</td>
+                    <td>{{ order.customerInfo.name }}</td>
+                    <td>{{ order.customerInfo.phoneNo }}</td>
+                    <td>Rs. {{ order.netAmount }}</td>
+                    <td>
+                      <span
+                        class="badge bg-success text-light cursor-pointer"
+                        mat-button
+                        [class.disabled]="
+                          order.status === 'DECLINED' ||
+                          order.status === 'CANCELLED' ||
+                          order.status === 'DELIVERED'
+                        "
+                        [matMenuTriggerFor]="afterMenu"
+                        [ngClass]="
+                          order.status === 'DECLINED' ||
+                          order.status === 'CANCELLED'
+                            ? 'bg-danger'
+                            : order.status === 'DELIVERED'
+                            ? 'bg-sucess'
+                            : order.status === 'PLACED'
+                            ? 'bg-info'
+                            : 'bg-warning'
+                        "
+                      >
+                        {{ order.status | uppercase }}
+                      </span>
+                      <mat-menu #afterMenu="matMenu" xPosition="after">
+                        <button
+                          mat-menu-item
+                          *ngFor="let st of status"
+                          (click)="changeStatus(order, st)"
+                        >
+                          {{ st }}
+                        </button>
+                      </mat-menu>
+                    </td>
+                    <td>
+                      <span
+                        *ngIf="order.rating > 0; else rating"
+                        class="badge"
+                        style="font-size: medium"
+                        [ngClass]="
+                          order.rating <= 2
+                            ? 'text-danger'
+                            : order.rating >= 4
+                            ? 'text-success'
+                            : 'text-warning'
+                        "
+                        >{{ order.rating }} <i class="fas fa-star"></i
+                      ></span>
+                      <ng-template #rating>
+                        <span class="badge bg-info text-light"
+                          >NOT FOUND</span
+                        ></ng-template
+                      >
+                    </td>
+                    <td>
+                      {{ order.dateOfOrder | date : "dd-MMM-yyyy" | uppercase }}
+                    </td>
+                    <td>
+                      <a
+                        class="btn btn-sm btn-icon btn-warning"
+                        [routerLink]="[order.orderId]"
+                        ><i class="fas fa-pen"></i
+                      ></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

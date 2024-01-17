@@ -1,0 +1,169 @@
+<app-screen-loader *ngIf="isLoaded"></app-screen-loader>
+<div class="container-fluid">
+  <div class="row my-3 mx-2 card-style">
+    <div class="col-12 pt-3 card-header">
+      <h4 class="card-title font-weight-bold">
+        <b style="cursor: pointer" class="" [routerLink]="['../']"
+          ><i class="fas fa-arrow-left"></i
+        ></b>
+        <b class="ml-3">Product Details ( #{{ pid }} )</b>
+      </h4>
+    </div>
+    <div class="mt-2 col-xs-12 col-sm-12 mb-4">
+      <form [formGroup]="productFormGroup">
+        <fieldset class="p-2" style="border: 1px solid #ffb633">
+          <legend class="w-auto" style="color: #ffb633">
+            Product Information
+          </legend>
+          <div class="form-group row">
+            <label for="name" class="col-2 mt-3 text-right"
+              >Product Name:</label
+            >
+            <input
+              type="text"
+              class="form-control col-9 mt-2"
+              id="name"
+              formControlName="name"
+              placeholder="Enter Product Name"
+              [value]="productDetails.name | titlecase"
+            />
+            <label for="desc" class="col-2 mt-3 text-right">Description:</label>
+            <input
+              type="text"
+              class="form-control col-9 mt-2"
+              id="desc"
+              formControlName="desc"
+              placeholder="Enter Product Description"
+              [value]="productDetails.desc"
+            />
+            <label for="price" class="col-2 mt-3 text-right">Price (₹):</label>
+            <input
+              type="text"
+              class="form-control col-5 mt-2"
+              id="price"
+              formControlName="price"
+              placeholder="Enter Product Price"
+              value="{{ productDetails.price }}"
+            />
+            <label for="avgRating" class="col-2 mt-2 text-right">Rating:</label>
+            <span class="col-3 mt-2">
+              <span
+                class="card-text"
+                *ngFor="let i of [1, 2, 3, 4, 5]"
+                style="color: #ffb633"
+              >
+                <span *ngIf="i <= productDetails.avgRating; else star_border">
+                  <mat-icon>star</mat-icon>
+                </span>
+                <ng-template #star_border>
+                  <mat-icon>star_border</mat-icon>
+                </ng-template>
+              </span>
+            </span>
+          </div>
+          <div class="row mb-2">
+            <div class="col-2"></div>
+            <span
+              *ngFor="let img of productDetails.img_url; let idx = index"
+              class="col-2 mr-4"
+            >
+              <div class="avatar-upload col-xs-4">
+                <div class="avatar-edit">
+                  <input
+                    type="file"
+                    [id]="idx"
+                    accept=".png, .jpg, .jpeg"
+                    (change)="onFileChanged($event, idx)"
+                  />
+                  <label [for]="idx"></label>
+                </div>
+                <div class="avatar-preview text-center">
+                  <img
+                    [src]="img"
+                    alt="avatar"
+                    class="circle"
+                    id="imagePreview"
+                  />
+                </div>
+                <!-- <input type="button" (click)="onUpload()" value="upload" /> -->
+              </div>
+            </span>
+          </div>
+          <div class="row">
+            <label for="type" class="col-2 mt-1 text-right">Food Type:</label>
+            <span class="col-3 mt-1">
+              <span
+                class="badge bg-warning text-light"
+                mat-button
+                [matMenuTriggerFor]="afterMenu"
+                style="cursor: pointer"
+              >
+                {{ productDetails.type | uppercase }}
+              </span>
+              <mat-menu #afterMenu="matMenu" xPosition="after">
+                <button
+                  mat-menu-item
+                  *ngFor="let type of foodType"
+                  (click)="changeType(type)"
+                >
+                  {{ type }}
+                </button>
+              </mat-menu>
+            </span>
+            <label for="live" class="col-1 mt-1 text-right">Status:</label>
+            <span class="col-2 mt-1">
+              <mat-slide-toggle
+                [checked]="productDetails.live"
+                (change)="liveStatusChange()"
+                color="primary"
+              ></mat-slide-toggle>
+            </span>
+            <label for="category" class="col-1 mt-1 text-right"
+              >Category:</label
+            >
+            <div class="col-3 mt-1">
+              <!-- Default inline 1-->
+              <div class="custom-control custom-radio custom-control-inline">
+                <input
+                  type="radio"
+                  class="custom-control-input"
+                  id="category1"
+                  name="category"
+                  formControlName="category"
+                  value="VEG"
+                />
+                <label class="custom-control-label" for="category1">Veg</label>
+              </div>
+
+              <!-- Default inline 2-->
+              <div class="custom-control custom-radio custom-control-inline">
+                <input
+                  type="radio"
+                  class="custom-control-input"
+                  id="category2"
+                  name="category"
+                  formControlName="category"
+                  value="NON-VEG"
+                />
+                <label class="custom-control-label" for="category2"
+                  >Non Veg</label
+                >
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <div class="row mt-3">
+        <div class="col-6">
+          <button class="btn btn-danger" (click)="deleteItem()">Delete</button>
+        </div>
+        <div class="col-6 text-right">
+          <button class="btn btn-warning" (click)="discardChanges()">Discard</button>
+          <button class="btn btn-success ml-2" (click)="saveChanges()">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+#gtco-testimonial {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  color: #fff;
+}
+
+.testi-content {
+  text-align: center;
+}
+.testi-content .testi-text {
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.6;
+  padding: 30px 60px;
+  font-size: 32px;
+}
+.testi-content .testi-author {
+  font-weight: 500;
+}
+.testi-content .testi-desc span {
+  color: #f34949;
+  font-weight: bold;
+}
+.testi-content .owl-dots {
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  left: 0;
+  right: 0;
+  bottom: -50px;
+}
+.testi-content .owl-nav {
+  display: none;
+}
+
+.owl-dot {
+  position: relative;
+  display: inline-block;
+  margin: 0 5px;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+}
+.owl-dot span {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border-radius: 50%;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.3);
+  text-indent: -999em;
+  cursor: pointer;
+  position: absolute;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0);
+  -webkit-transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.owl-dot.active > span {
+  background-color: transparent;
+  box-shadow: 0 0 0 2px white;
+}
+
+.overlay {
+  position: relative;
+}
+
+.overlay:after {
+  position: absolute;
+  display: block;
+  content: "";
+  background: #000;
+  opacity: 0.2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.overlay .section-content {
+  position: relative;
+  z-index: 1;
+}

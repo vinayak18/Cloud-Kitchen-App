@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: UserService
+  config:
+    import: configserver:http://localhost:8087
+    discovery:
+      enabled: true
+    fail-fast: true
+    retry:
+      initial-interval: 1500
+      multiplier: 1.5
+      max-attempts: 10000
+      max-interval: 1000
+  profiles:
+    active: default
+
+management:
+  security:
+    enabled: false

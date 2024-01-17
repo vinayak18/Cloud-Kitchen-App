@@ -1,0 +1,71 @@
+<app-screen-loader *ngIf="isLoaded"></app-screen-loader>
+<div class="container-fluid">
+  <div class="row my-3 mx-2 card-style">
+    <div class="col-3 pt-3 card-header">
+      <h4 class="card-title font-weight-bold">{{ foodType | titlecase }}</h4>
+    </div>
+    <div class="col-6 card-header">
+      <div class="form-group has-search">
+        <span class="fa fa-search form-control-feedback"></span>
+        <input type="text" class="form-control" placeholder="Search" />
+      </div>
+    </div>
+    <div class="col-3 card-header">
+      <button class="btn btn-success float-right">New Item</button>
+    </div>
+    <div
+      class="mt-2 col-xs-12 col-sm-6 col-md-4 col-lg-3"
+      *ngFor="let product of allProducts"
+    >
+      <div class="mt-0" style="position: relative; top: 20%">
+        <div class="card-body" [ngClass]="product.live ? 'card-selected' : ''">
+          <div class="text-center">
+            <h5 class="card-body-title mt-4">{{ product.name | uppercase }}</h5>
+            <p class="card-body-title" style="font-size: 120%">
+              ₹ {{ product.price }}
+            </p>
+            <span
+              class="card-text"
+              *ngFor="let i of [1, 2, 3, 4, 5]"
+              style="color: #ffb633"
+            >
+              <span *ngIf="i <= product.avgRating; else star_border">
+                <mat-icon>star</mat-icon>
+              </span>
+              <ng-template #star_border>
+                <mat-icon>star_border</mat-icon>
+              </ng-template>
+            </span>
+          </div>
+          <hr />
+          <div class="card-text row">
+            <span class="col-9">
+              <a
+                class="btn btn-sm btn-icon btn-warning"
+                [routerLink]="[product.pid]"
+                ><i class="fas fa-pen"></i
+              ></a>
+            </span>
+            <span class="col-3">
+              <mat-slide-toggle
+                [checked]="product.live"
+                (change)="liveStatusChange(product)"
+                color="primary"
+              ></mat-slide-toggle>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mb-0" style="position: relative; top: -64%">
+        <img
+          class=""
+          [src]="product.img_url[0]"
+          height="150px"
+          width="150px"
+          alt="Card image cap"
+          style="border-radius: 50%; object-fit: cover"
+        />
+      </div>
+    </div>
+  </div>
+</div>

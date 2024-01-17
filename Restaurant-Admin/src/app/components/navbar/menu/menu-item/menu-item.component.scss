@@ -1,0 +1,107 @@
+.circle {
+  border-radius: 50%;
+  height: 180px;
+  object-fit: cover;
+  width: 180px;
+}
+.avatar-upload {
+  position: relative;
+  max-width: 205px;
+}
+.avatar-upload .avatar-edit {
+  position: absolute;
+  right: -15px;
+  z-index: 1;
+  top: 150px;
+}
+.avatar-upload .avatar-edit input {
+  display: none;
+}
+.avatar-upload .avatar-edit input + label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #ffb533;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+.avatar-upload .avatar-edit input + label:hover {
+  background: #d2952d;
+  border-color: #d6d6d6;
+}
+.avatar-upload .avatar-edit input + label:after {
+  content: "\f040";
+  font-family: "FontAwesome";
+  color: #757575;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+.avatar-upload .avatar-preview {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #d4d4d4;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.active {
+  background-color: #ffb533;
+}
+
+.list-group-item:hover {
+  cursor: pointer;
+}
+
+.mat-mdc-slide-toggle.mat-primary {
+  --mdc-switch-selected-icon-color: #ffb633;
+  --mdc-switch-selected-focus-state-layer-color: #fef4e5;
+  --mdc-switch-selected-handle-color: #ffb633;
+  --mdc-switch-selected-hover-state-layer-color: #fef4e5;
+  --mdc-switch-selected-pressed-state-layer-color: #fef4e5;
+  --mdc-switch-selected-focus-handle-color: #ffb633;
+  --mdc-switch-selected-hover-handle-color: #ffb633;
+  --mdc-switch-selected-pressed-handle-color: #ffb633;
+  --mdc-switch-selected-focus-track-color: #ffe3af;
+  --mdc-switch-selected-hover-track-color: #ffe3af;
+  --mdc-switch-selected-pressed-track-color: #ffe3af;
+  --mdc-switch-selected-track-color: #ffe3af;
+  --mdc-switch-unselected-icon-color: black;
+  --mdc-switch-unselected-handle-color: black;
+  --mdc-switch-unselected-focus-handle-color: black;
+  --mdc-switch-unselected-hover-handle-color: black;
+  --mdc-switch-unselected-pressed-handle-color: black;
+}
+
+#category1:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: rgb(35, 209, 35);
+  background-color: rgb(35, 209, 35);
+}
+
+#category2:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: red;
+  background-color: red;
+}
+
+label {
+  font-weight: bold;
+}

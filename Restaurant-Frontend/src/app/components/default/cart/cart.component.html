@@ -1,0 +1,103 @@
+<app-screen-loader *ngIf="isLoaded"></app-screen-loader>
+<div *ngIf="cartItems.length === 0" class="text-center mt-5 pt-5 mb-5 pb-5">
+  <a class="" [routerLink]="['/menu']"
+    ><img src="../assets/img/cart.png" alt="" width="10%"
+  /></a>
+  <h4 class="mt-4"><b>Your cart is empty</b></h4>
+  <p><i>Looks like you havn't added anything to your cart yet</i></p>
+  <button
+    type="submit"
+    class="btn"
+    [routerLink]="['/menu']"
+    style="background-color: #ffb633"
+  >
+    Explore Menu
+  </button>
+</div>
+<div
+  *ngIf="cartItems.length !== 0"
+  class="container"
+  [ngStyle]="cartItems.length <= 2 ? { height: '70vh' } : { height: '100%' }"
+>
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th style="width: 60%">Product</th>
+        <th style="width: 10%">Price</th>
+        <th style="width: 10%">Quantity</th>
+        <th style="width: 10%">Subtotal</th>
+        <th style="width: 10%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of cartItems; let i = index">
+        <td class="Product">
+          <div class="row">
+            <div class="col-3">
+              <img
+                class="menu-img rounded-circle img-fluid"
+                [src]="product.img_url[0]"
+                alt=""
+              />
+            </div>
+            <div class="col-7">
+              <h4
+                class="nomargin"
+                [routerLink]="['/menu/product', product.pid]"
+              >
+                {{ product.name }}
+              </h4>
+              <p>{{ product.desc }}</p>
+            </div>
+          </div>
+        </td>
+        <td data-th="Price" class="amount">₹ {{ product.price }}</td>
+        <td data-th="Quantity">
+          <input
+            type="number"
+            class="form-control text-center"
+            value="1"
+            [(ngModel)]="product.quantity"
+            (change)="removeProduct(i, 'input')"
+          />
+        </td>
+        <td data-th="Subtotal" class="amount">
+          ₹ {{ product.price * product.quantity }}
+        </td>
+        <td class="actions" data-th="">
+          <button class="btn btn-danger" (click)="removeProduct(i, 'btn')">
+            <i class="fa fa-trash-o"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <!-- <tr class="visible-xs">
+        <td class="text-center"><strong>Total 1.99</strong></td>
+      </tr> -->
+      <tr *ngIf="isSaved">
+        <td colspan="6" class="hidden-xs text-right">
+          <button class="btn btn-dark sv" (click)="saveChanges()">
+            Save Changes
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-warning" [routerLink]="['/menu']"
+            ><i class="fa fa-angle-left"></i> Continue Shopping</a
+          >
+        </td>
+        <td class="hidden-xs"></td>
+        <td colspan="2" class="hidden-xs text-center">
+          <strong>Total: ₹ {{ totalAmount }}</strong>
+        </td>
+        <td>
+          <a class="btn btn-success btn-block" (click)="checkout()"
+            >Checkout <i class="fa fa-angle-right"></i
+          ></a>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

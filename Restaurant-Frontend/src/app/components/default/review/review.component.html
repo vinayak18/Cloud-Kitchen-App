@@ -1,0 +1,44 @@
+<app-screen-loader *ngIf="isLoaded"></app-screen-loader>
+<section id="gtco-testimonial" class="mb-5 container-fluid overlay bg-fixed section-padding"
+  style="background-image: url(../../assets/img/testi-bg.jpg);">
+  <div class="container">
+    <div class="section-content">
+      <div class="p-5 heading-section text-center">
+        <span class="subheading">
+          Testimony
+        </span>
+        <h2>
+          Happy Customer
+        </h2>
+      </div>
+      <!-- Testimonial -->
+      <div id="carouselControl" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li *ngFor="let feedback of customerTestimony; let i = index" data-target="#carouselControl"
+            [attr.data-slide-to]="i" [ngClass]="{'active': i == 0}"></li>
+        </ol>
+        <!-- <ol class="carousel-indicators">
+          <li data-target="#carouselControl" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselControl" data-slide-to="1"></li>
+        </ol> -->
+        <div class="carousel-inner testi-content">
+          <div class="mb-5 mt-2 carousel-item"  *ngFor="let feedback of customerTestimony; let i=index;" [ngClass]="{'active': i == 0}">
+            <i class="testi-icon fa fa-3x fa-quote-left"></i>
+            <p class="testi-text ">{{feedback.message}}</p>
+            <p class="testi-author ">{{feedback.name}}</p>
+            <p class="testi-desc "><span>Amma Ki Kadai</span></p>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselControl" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselControl" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <!-- End of Testimonial -->
+    </div>
+  </div>
+</section>

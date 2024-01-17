@@ -1,0 +1,72 @@
+<!-- End of Reservation Section -->
+<footer class="mastfoot pb-5 bg-white section-padding pb-0 mt-3">
+  <div class="inner container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="footer-widget pr-lg-5 pr-0">
+          <img src="../../assets/img/logo-4.png" class="footer-logo mb-3" alt="" height="50px">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et obcaecati quisquam id sit
+            omnis explicabo voluptate aut placeat, soluta, nisi ea magni facere, itaque incidunt
+            modi? Magni, et voluptatum dolorem.</p>
+          <nav class="nav nav-mastfoot justify-content-start">
+            <a class="nav-link" href="#">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="nav-link" href="#">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a class="nav-link" href="#">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </nav>
+        </div>
+
+      </div>
+      <div class="col-lg-4">
+        <div class="footer-widget px-lg-5 px-0">
+          <h4>Open Hours</h4>
+          <ul class="list-unstyled open-hours">
+            <li class="d-flex justify-content-between"><span>Monday</span><span>9:00 - 24:00</span>
+            </li>
+            <li class="d-flex justify-content-between"><span>Tuesday</span><span>9:00 - 24:00</span>
+            </li>
+            <li class="d-flex justify-content-between"><span>Wednesday</span><span>9:00 -
+                24:00</span></li>
+            <li class="d-flex justify-content-between"><span>Thursday</span><span>9:00 -
+                24:00</span></li>
+            <li class="d-flex justify-content-between"><span>Friday</span><span>9:00 - 02:00</span>
+            </li>
+            <li class="d-flex justify-content-between"><span>Saturday</span><span>9:00 -
+                02:00</span></li>
+            <li class="d-flex justify-content-between"><span>Sunday</span><span> Closed</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="col-lg-4">
+        <div class="footer-widget pl-lg-5 pl-0">
+          <h4>Feedback</h4>
+          <p>Please provide us your valuable feedback.</p>
+          <form [formGroup]="feedbackForm" id="newsletter">
+            <div class="form-group">
+              <input type="text" formControlName="name" class="form-control mb-2" id="name" aria-describedby="text"
+                placeholder="Enter your name">
+              <input type="email" formControlName="email" class="form-control mb-2" id="email" aria-describedby="email"
+                placeholder="Enter your email">
+              <input type="text" formControlName="message" class="form-control" id="text" aria-describedby="text"
+                placeholder="Enter your message">
+            </div>
+            <button type="submit" (click)="sendFeedback()" class="btn w-100" style="background-color: #ffb633;">Submit</button>
+          </form>
+        </div>
+
+      </div>
+      <div class="col-md-12 d-flex align-items-center">
+        <p class="mx-auto text-center mb-0" style="color: #ffb633; font-weight: bold;">&#169; Copyright 2019. All Right
+          Reserved.</p>
+      </div>
+
+    </div>
+  </div>
+</footer>

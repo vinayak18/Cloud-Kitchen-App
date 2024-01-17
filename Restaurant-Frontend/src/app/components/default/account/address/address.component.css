@@ -1,0 +1,27 @@
+::ng-deep .mat-step-header .mat-step-icon-selected,
+::ng-deep .mat-step-header .mat-step-icon-state-done,
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+  background-color: #ffb633 !important;
+}
+
+::ng-deep.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #ffb633;
+}
+
+::ng-deep .mat-form-field-label {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #ffb633 !important;
+}
+
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: red !important;
+}
+
+.st-address,
+.mat-frm-field,
+.mat-frm-field-70 {
+  width: 100%;
+}

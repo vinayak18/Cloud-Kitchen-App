@@ -1,0 +1,518 @@
+<mat-stepper
+  class="example-stepper container"
+  [orientation]="(stepperOrientation | async)!"
+  (selectionChange)="selectionChange($event)"
+  [linear]="true"
+  #stepper
+>
+  <mat-step
+    [stepControl]="firstFormGroup"
+    label="Personal Details"
+    [editable]="editable"
+  >
+    <form [formGroup]="firstFormGroup" class="mt-2">
+      <div class="row text-center">
+        <div class="col-sm-12 col-md-6">
+          <mat-form-field appearance="fill" class="mat-frm-field">
+            <mat-label>User Id</mat-label>
+            <input matInput placeholder="" formControlName="userId" readonly />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <mat-form-field appearance="fill" class="mat-frm-field">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              placeholder="Enter your name"
+              formControlName="name"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <mat-form-field appearance="fill" class="mat-frm-field">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="Last name, First name"
+              formControlName="email"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <mat-form-field appearance="fill" class="mat-frm-field">
+            <mat-label>Phone No.</mat-label>
+            <input
+              matInput
+              placeholder="Last name, First name"
+              formControlName="phoneNo"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12">
+          <button
+            mat-button
+            matStepperNext
+            class="btn btn-warning float-right mr-5"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step
+    [stepControl]="secondFormGroup"
+    label="Address"
+    [completed]="!deliverySwitch"
+    [editable]="editable"
+  >
+    <form [formGroup]="secondFormGroup" class="mt-2">
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6 head1">
+          <label class="js-check box active">
+            <input
+              id="radiosymbol"
+              type="radio"
+              name="delivery"
+              value="Delivery"
+              (click)="toggleDeliverySwitch('Delivery')"
+              checked
+            />
+            <h6 class="title">Delivery</h6>
+            <p class="text-muted">We will deliver the order by Swiggy Genie</p>
+          </label>
+        </div>
+        <div class="form-group col-sm-12 col-md-6 head2">
+          <label class="js-check box">
+            <input
+              id="radiosymbol"
+              type="radio"
+              name="delivery"
+              (click)="toggleDeliverySwitch('Pick-Up')"
+              value="Pick-Up"
+            />
+            <h6 class="title">Pick-up</h6>
+            <p class="text-muted">Visit our restaurant to collect the order</p>
+          </label>
+        </div>
+      </div>
+      <div class="row text-center" *ngIf="deliverySwitch">
+        <div class="col-sm-12">
+          <mat-form-field appearance="fill" class="st-address">
+            <mat-label>Street Address</mat-label>
+            <input
+              matInput
+              formControlName="streetAddress"
+              placeholder="Ex. 1 Main St, New York, NY"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <mat-form-field appearance="fill" class="mat-frm-field">
+            <mat-label>Flat No.</mat-label>
+            <input
+              matInput
+              formControlName="flatNo"
+              placeholder="Ex. 1 Main St, New York, NY"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <mat-form-field appearance="fill" class="mat-frm-field">
+            <mat-label>Landmark</mat-label>
+            <input
+              matInput
+              formControlName="landmark"
+              placeholder="Ex. 1 Main St, New York, NY"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <mat-form-field appearance="fill" class="mat-frm-field-70">
+            <mat-label>City</mat-label>
+            <input
+              matInput
+              formControlName="city"
+              placeholder="Ex. 1 Main St, New York, NY"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <mat-form-field appearance="fill" class="mat-frm-field-70">
+            <mat-label>State</mat-label>
+            <input
+              matInput
+              formControlName="state"
+              placeholder="Ex. 1 Main St, New York, NY"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <mat-form-field appearance="fill" class="mat-frm-field-70">
+            <mat-label>Pincode</mat-label>
+            <input
+              matInput
+              formControlName="pincode"
+              placeholder="Ex. 1 Main St, New York, NY"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-12">
+          <button
+            mat-button
+            matStepperPrevious
+            class="btn btn-warning float-left ml-5"
+          >
+            Back
+          </button>
+          <button
+            mat-button
+            matStepperNext
+            class="btn btn-warning float-right mr-5"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step label="Order Summary" [editable]="editable">
+    <div class="container mb-2">
+      <h5 style="color: #ffb633" class="mt-2 border border-warning p-2 mb-3">
+        <b>Order Summary</b>
+      </h5>
+      <div class="mb-3 ml-3 mr-3">
+        <ul class="list-group list-group-flush">
+          <div class="row">
+            <div class="col-sm-12 col-md-5 vr">
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h6>Customer Details</h6>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="">
+                  <div class="">
+                    <div class="row mt-2">
+                      <div class="col-sm-4">
+                        <span>Name</span>
+                      </div>
+                      <div class="col-sm-8 text-right">
+                        <span class="break-word"
+                          >{{ orderSummary.customerInfo?.name }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-2">
+                  <hr />
+                  <div class="">
+                    <div class="row mt-2">
+                      <div class="col-sm-4">
+                        <span>Email</span>
+                      </div>
+                      <div class="col-sm-8 text-right">
+                        <span class="break-word"
+                          >{{ orderSummary.customerInfo?.email }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-2">
+                  <hr />
+                  <div class="">
+                    <div class="row mt-2">
+                      <div class="col-sm-4">
+                        <span>Phone No.</span>
+                      </div>
+                      <div class="col-sm-8 text-right">
+                        <span class="break-word"
+                          >{{ orderSummary.customerInfo?.phoneNo }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-2">
+                  <hr />
+                  <div class="">
+                    <div class="row mt-2">
+                      <div class="col-sm-4">
+                        <span>Delivery Type</span>
+                      </div>
+                      <div class="col-sm-8">
+                        <span class="float-right font-color font-weight-bold"
+                          >{{ orderSummary.deliveryType }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-2">
+                  <hr />
+                  <div class="">
+                    <div class="row mt-2">
+                      <div class="col-sm-4">
+                        <span>{{ orderSummary.deliveryType }} Address</span>
+                      </div>
+                      <div class="col-sm-8">
+                        <span class="float-right"
+                          >{{ orderSummary.customerInfo?.getAddress() }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </div>
+            <div class="col-sm-12 col-md-7 vr">
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h6>Order Details</h6>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="" *ngIf="breakfastList.length !== 0">
+                  <h6>BREAKFAST</h6>
+                  <div class="" *ngFor="let item of breakfastList">
+                    <div class="row mt-2">
+                      <div class="col-sm-8">
+                        <span>{{ item.quantity }} X {{ item.name }}</span>
+                      </div>
+                      <div class="col-sm-4">
+                        <span class="float-right"
+                          >₹ {{ item.quantity * item.price }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <hr
+                    *ngIf="
+                      0 !== lunchList.length ||
+                      0 !== dinnerList.length ||
+                      0 !== specialDishList.length
+                    "
+                  />
+                </div>
+
+                <div class="mt-2" *ngIf="lunchList.length !== 0">
+                  <h6>LUNCH</h6>
+                  <div class="" *ngFor="let item of lunchList">
+                    <div class="row mt-2">
+                      <div class="col-sm-8">
+                        <span>{{ item.quantity }} X {{ item.name }}</span>
+                      </div>
+                      <div class="col-sm-4">
+                        <span class="float-right"
+                          >₹ {{ item.quantity * item.price }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <hr
+                    *ngIf="
+                      0 !== dinnerList.length || 0 !== specialDishList.length
+                    "
+                  />
+                </div>
+                <div class="mt-2" *ngIf="dinnerList.length !== 0">
+                  <h6>DINNER</h6>
+                  <div class="" *ngFor="let item of dinnerList">
+                    <div class="row mt-2">
+                      <div class="col-sm-8">
+                        <span>{{ item.quantity }} X {{ item.name }}</span>
+                      </div>
+                      <div class="col-sm-4">
+                        <span class="float-right"
+                          >₹ {{ item.quantity * item.price }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <hr *ngIf="0 !== specialDishList.length" />
+                </div>
+                <div class="mt-2" *ngIf="specialDishList.length !== 0">
+                  <h6>Special DISH</h6>
+                  <div class="" *ngFor="let item of specialDishList">
+                    <div class="row mt-2">
+                      <div class="col-sm-8">
+                        <span>{{ item.quantity }} X {{ item.name }}</span>
+                      </div>
+                      <div class="col-sm-4">
+                        <span class="float-right"
+                          >₹ {{ item.quantity * item.price }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 vr">
+              <li class="list-group-item">
+                <div class="row mt-2">
+                  <div class="col-sm-8">
+                    <h6>Item Total</h6>
+                  </div>
+                  <div class="col-sm-4">
+                    <h6 class="float-right">
+                      ₹ {{ orderSummary.actualAmount }}
+                    </h6>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-sm-12">
+                    <span>Coupon Code</span>
+                    <input
+                      type="text"
+                      class="coupon-input-box ml-2"
+                      name="couponTxt"
+                      #couponTxt
+                    /><button
+                      class="btn btn-warning btn-sm ml-2"
+                      type="submit"
+                      name="submit"
+                      (click)="validateCouponCode(couponTxt.value)"
+                    >
+                      Apply
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="row mt-2"
+                  *ngIf="
+                    null != orderSummary.coupon &&
+                    'DEFAULT0' != orderSummary.coupon.couponCode
+                  "
+                >
+                  <div class="col-sm-8">
+                    <span>Discount ({{ orderSummary.coupon.couponCode }})</span>
+                  </div>
+                  <div class="col-sm-4">
+                    <span class="float-right"
+                      >- ₹
+                      {{
+                        orderSummary.coupon.discountAmount | number : "1.2-2"
+                      }}</span
+                    >
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-sm-8">
+                    <span>Tax Amount</span>
+                  </div>
+                  <div class="col-sm-4">
+                    <span class="float-right"
+                      >₹ {{ orderSummary.tax | number : "1.2-2" }}</span
+                    >
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-sm-8">
+                    <span>Delivery Fee</span>
+                  </div>
+                  <div class="col-sm-4">
+                    <span class="float-right"
+                      >₹ {{ orderSummary.deliveryFee }}</span
+                    >
+                  </div>
+                </div>
+                <hr />
+                <div class="row mt-2">
+                  <div class="col-sm-8">
+                    <h6>Net Total</h6>
+                  </div>
+                  <div class="col-sm-4">
+                    <h6
+                      class="float-right"
+                      style="color: #ffb633; font-weight: bold"
+                    >
+                      ₹ {{ orderSummary.netAmount }}
+                    </h6>
+                  </div>
+                </div>
+              </li>
+            </div>
+          </div>
+        </ul>
+      </div>
+
+      <div class="col-12">
+        <button
+          mat-button
+          matStepperPrevious
+          class="btn btn-warning float-left"
+        >
+          Back
+        </button>
+        <button mat-button matStepperNext class="btn btn-warning float-right">
+          Next
+        </button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step label="Make Payment">
+    <form [formGroup]="paymentForm" class="mt-2">
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6 head1">
+          <label class="js-check box">
+            <input
+              id="radiosymbol"
+              type="radio"
+              name="paymentType"
+              formControlName="paymentType"
+              value="razorPay"
+            />
+            <h6 class="title">Cards/Netbanking/UPI</h6>
+            <p class="text-muted">Securely processed via Razorpay</p>
+          </label>
+        </div>
+        <div class="form-group col-sm-12 col-md-6 head2">
+          <label class="js-check box active">
+            <input
+              id="radiosymbol"
+              type="radio"
+              name="paymentType"
+              formControlName="paymentType"
+              value="stripe"
+              checked
+            />
+            <h6 class="title">Credit/Debit Card</h6>
+            <p class="text-muted">Securly processed via Stripe</p>
+          </label>
+        </div>
+      </div>
+      <div class="col-12">
+        <button
+          mat-button
+          matStepperPrevious
+          class="btn btn-warning float-left"
+        >
+          Back
+        </button>
+        <button
+          mat-button
+          (click)="placeOrder()"
+          class="btn btn-warning float-right"
+        >
+          Pay
+        </button>
+      </div>
+    </form>
+  </mat-step>
+</mat-stepper>
